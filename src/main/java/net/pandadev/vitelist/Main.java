@@ -20,7 +20,7 @@ import java.util.List;
 @Plugin(
         id = "vitelist",
         name = "Main",
-        version = "1.0",
+        version = "1.1",
         description = "A simple but useful whitelist plugin for Velocity",
         url = "https://pandadev.net",
         authors = {"PandaDEV"}
@@ -37,6 +37,13 @@ public class Main {
     private Path dataDirectory;
     private YamlConfigurationLoader loader;
     private boolean whitelistEnabled = true;
+
+    private final Metrics.Factory metricsFactory;
+
+    @Inject
+    public Main(Metrics.Factory metricsFactory) {
+        this.metricsFactory = metricsFactory;
+    }
 
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
@@ -56,6 +63,9 @@ public class Main {
 
         CommandManager commandManager = server.getCommandManager();
         commandManager.register(commandManager.metaBuilder("vlist").build(), new VlistCommand(this));
+
+        int pluginId = 21540;
+        metricsFactory.make(this, pluginId);
     }
 
     @Subscribe
