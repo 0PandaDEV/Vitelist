@@ -2,6 +2,8 @@
 
 [My Website](https://pandadev.net)
 
+<a href="https://buymeacoffee.com/pandadev_"><img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black"/></a>
+
 ***
 
 <img src="https://i.imgur.com/rTxFoeX.png" height="54px"/>
