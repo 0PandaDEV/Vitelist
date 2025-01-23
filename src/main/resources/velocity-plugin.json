@@ -1,0 +1,10 @@
+{
+  "id": "vitelist",
+  "name": "${project.name}",
+  "version": "${project.version}",
+  "description": "${project.description}",
+  "url": "${project.url}",
+  "authors": ["PandaDEV"],
+  "dependencies": [],
+  "main": "net.pandadev.vitelist.Main"
+} 
