@@ -30,12 +30,20 @@ public class VlistCommand implements SimpleCommand {
         CommandSource source = invocation.source();
         String[] args = invocation.arguments();
 
+        if (!source.hasPermission("vitelist.*")) {
+            source.sendMessage(Component.text(Main.getPrefix() + "§cYou don't have permission to use this command"));
+            return;
+        }
         if (args.length < 1) {
             source.sendMessage(Component.text(Main.getPrefix() + "§cInvalid usage"));
             return;
         }
         switch (args[0].toLowerCase()) {
             case "add":
+                if (!source.hasPermission("vitelist.add")) {
+                    source.sendMessage(Component.text(Main.getPrefix() + "§cYou don't have permission to use this command"));
+                    return;
+                }
                 if (args.length < 2) {
                     source.sendMessage(Component.text(Main.getPrefix() + "§cPlease specify a player name to add"));
                     return;
@@ -54,6 +62,10 @@ public class VlistCommand implements SimpleCommand {
                 });
                 break;
             case "remove":
+                if (!source.hasPermission("vitelist.remove")) {
+                    source.sendMessage(Component.text(Main.getPrefix() + "§cYou don't have permission to use this command"));
+                    return;
+                }
                 if (args.length < 2) {
                     source.sendMessage(Component.text(Main.getPrefix() + "§cPlease specify a player name to remove"));
                     return;
@@ -72,14 +84,26 @@ public class VlistCommand implements SimpleCommand {
                 });
                 break;
             case "on":
+                if (!source.hasPermission("vitelist.on")) {
+                    source.sendMessage(Component.text(Main.getPrefix() + "§cYou don't have permission to use this command"));
+                    return;
+                }
                 plugin.setWhitelistEnabled(true);
                 source.sendMessage(Component.text(Main.getPrefix() + "§7Vitelist enabled"));
                 break;
             case "off":
+                if (!source.hasPermission("vitelist.off")) {
+                    source.sendMessage(Component.text(Main.getPrefix() + "§cYou don't have permission to use this command"));
+                    return;
+                }
                 plugin.setWhitelistEnabled(false);
                 source.sendMessage(Component.text(Main.getPrefix() + "§7Vitelist disabled"));
                 break;
             case "list":
+                if (!source.hasPermission("vitelist.list")) {
+                    source.sendMessage(Component.text(Main.getPrefix() + "§cYou don't have permission to use this command"));
+                    return;
+                }
                 CompletableFuture.runAsync(() -> {
                     try {
                         List<String> uuids = getWhitelistedUuids();

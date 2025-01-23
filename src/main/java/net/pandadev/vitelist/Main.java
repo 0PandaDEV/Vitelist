@@ -62,7 +62,13 @@ public class Main {
         }
 
         CommandManager commandManager = server.getCommandManager();
-        commandManager.register(commandManager.metaBuilder("vlist").build(), new VlistCommand(this));
+        commandManager.register(
+            commandManager.metaBuilder("vitelist")
+            .aliases("vlist")
+            .plugin(this)
+            .build(),
+            new VlistCommand(this)
+        );
 
         int pluginId = 21540;
         metricsFactory.make(this, pluginId);
