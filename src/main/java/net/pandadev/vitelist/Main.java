@@ -100,4 +100,8 @@ public class Main {
     public static String getPrefix() {
         return prefix;
     }
+
+    public Logger getLogger() {
+        return logger;
+    }
 }
